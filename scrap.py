@@ -8,9 +8,13 @@ fd.write("main_title, official_title1, official_title2, type, start_date, end_da
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3'}
 for o in range(1, 51):
     print(o)
-    reg_url = "https://anidb.net/perl-bin/animedb.pl?show=anime&aid=" + str(o)
-    req = Request(url=reg_url, headers=headers) 
-    html = urlopen(req).read()
+    try:
+        reg_url = "https://anidb.net/perl-bin/animedb.pl?show=anime&aid=" + str(o)
+        req = Request(url=reg_url, headers=headers) 
+        html = urlopen(req).read()
+    except:
+        print(page does not exit)
+        continue
     page_soup=soup(html,"html.parser")
 
     table = page_soup.find("div", {"id": "tab_1_pane"} ).div.table.tbody
