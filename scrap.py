@@ -13,7 +13,7 @@ for o in range(1, 51):
         req = Request(url=reg_url, headers=headers) 
         html = urlopen(req).read()
     except:
-        print(page does not exit)
+        print("page does not exit")
         continue
     page_soup=soup(html,"html.parser")
 
